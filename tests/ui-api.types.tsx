@@ -5,8 +5,10 @@
 import {
   Badge,
   Button,
+  ButtonLink,
   Card,
   CardHeader,
+  CheckRow,
   Chip,
   ChipGroup,
   Dialog,
@@ -23,6 +25,8 @@ const noop = () => undefined;
 export const validUsage = (
   <>
     <Button variant="danger" size="lg" />
+    <ButtonLink href="/" variant="outline" size="lg" />
+    <CheckRow title="Milk" meta="gallons" note="2%" checked onCheckedChange={noop} />
     <Badge tone="info" />
     <Card as="article" padding="lg" />
     <CardHeader title="Title" titleAs="h3" />
@@ -53,6 +57,10 @@ export const invalidUsage = (
     <Button variant="tertiary" />
     {/* @ts-expect-error unknown size */}
     <Button size="xl" />
+    {/* @ts-expect-error a link needs somewhere to go */}
+    <ButtonLink variant="outline" />
+    {/* @ts-expect-error the row owns the checkbox, so its state is required */}
+    <CheckRow title="Milk" onCheckedChange={noop} />
     {/* @ts-expect-error unknown tone */}
     <Badge tone="purple" />
     {/* @ts-expect-error unknown padding */}

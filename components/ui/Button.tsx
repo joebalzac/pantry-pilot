@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { ComponentPropsWithRef, ReactNode } from 'react';
 import { cn } from '../../lib/cn';
 import type { ButtonVariant, ControlSize } from '../../lib/tokens';
@@ -33,5 +34,33 @@ export function Button({
       ) : null}
       {children}
     </button>
+  );
+}
+
+export type ButtonLinkProps = ComponentPropsWithRef<typeof Link> & {
+  variant?: ButtonVariant;
+  size?: ControlSize;
+  /** Decorative: hidden from assistive tech, so the link still needs a text or aria-label name. */
+  leadingIcon?: ReactNode;
+};
+
+/** Looks like a button and navigates. Use `Button` for one that acts on this page. */
+export function ButtonLink({
+  variant = 'primary',
+  size = 'md',
+  leadingIcon,
+  className,
+  children,
+  ...props
+}: ButtonLinkProps) {
+  return (
+    <Link {...props} className={cn('btn', className)} data-variant={variant} data-size={size}>
+      {leadingIcon ? (
+        <span className="btn__icon" aria-hidden="true">
+          {leadingIcon}
+        </span>
+      ) : null}
+      {children}
+    </Link>
   );
 }

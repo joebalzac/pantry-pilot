@@ -199,6 +199,30 @@
   --item-row-actions-gap: var(--space-gap-xs);
   --item-row-actions-indent: calc(var(--icon-well-size-md) + var(--item-row-gap));
 
+  /* Check row */
+  --check-row-gap: var(--space-gap-sm);
+  --check-row-padding-y: var(--space-gap-sm);
+  --check-row-border: var(--color-border-subtle);
+  --check-row-border-width: var(--border-width-default);
+  --check-row-main-min: 12rem;
+  --check-row-min-height: var(--control-height-md);
+  --check-row-title-weight: var(--font-weight-heading);
+  --check-row-checked-fg: var(--color-text-secondary);
+  --check-row-meta-margin: var(--space-stack-xs);
+  --check-row-meta-gap: var(--space-gap-xs);
+  --check-row-meta-size: var(--font-size-caption);
+  --check-row-meta-fg: var(--color-text-secondary);
+  --check-box-size: 1.5rem;
+  --check-box-radius: var(--radius-control-sm);
+  --check-box-border: var(--color-border-strong);
+  --check-box-border-width: var(--border-width-focus);
+  --check-box-bg: var(--color-bg-surface);
+  --check-box-checked-bg: var(--color-action-primary);
+  --check-box-mark: var(--color-text-on-action);
+  --check-box-mark-width: var(--border-width-focus);
+  --check-box-transition: background var(--motion-fast), border-color var(--motion-fast);
+  --shopping-group-gap: var(--space-gap-lg);
+
   /* Stepper */
   --stepper-gap: var(--space-gap-2xs);
   --stepper-control-size: var(--control-height-sm);

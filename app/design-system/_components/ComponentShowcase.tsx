@@ -9,6 +9,7 @@ import {
   Button,
   Card,
   CardHeader,
+  CheckRow,
   Chip,
   ChipGroup,
   Dialog,
@@ -55,6 +56,7 @@ export function ComponentShowcase() {
   const [qty, setQty] = useState(2);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [toastShown, setToastShown] = useState(false);
+  const [checked, setChecked] = useState(true);
   const tabsId = useId();
 
   const hideToast = useCallback(() => setToastShown(false), []);
@@ -217,6 +219,28 @@ export function ComponentShowcase() {
           </ItemList>
         </Card>
       </div>
+
+      <h3 className="ds-subheading">Check row</h3>
+      <ItemList>
+        <CheckRow
+          title="Whole Milk"
+          meta="Added 1.5 gallons to your pantry"
+          checked={checked}
+          onCheckedChange={setChecked}
+        />
+        <CheckRow
+          title="Bananas"
+          meta={
+            <>
+              bananas · suggested
+              <Badge tone="info">Auto</Badge>
+            </>
+          }
+          note="Slightly green"
+          checked={false}
+          onCheckedChange={noop}
+        />
+      </ItemList>
 
       <h3 className="ds-subheading">Food icons</h3>
       <ul className="ds-icon-grid">

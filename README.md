@@ -15,7 +15,13 @@ Open http://localhost:3000. `npm run typecheck` and `npm run build` are availabl
 - Stock estimated from the last count and daily use, shown as an estimate next to that count
 - Undo toast after a quantity change or removal
 - Sorting by department, name or days left, and a low-stock filter
-- Shopping list with add/remove actions
+- Shopping list with an amount and note per item, grouped by store department
+- Suggested amounts that follow the pantry until you set your own: enough to reach the reorder level plus 7 days of use, rounded up to what a store sells
+- One-off items for things the pantry doesn't track
+- Optional auto-add, which keeps low items on the list and respects the ones you take off
+- Shopping mode at `/shopping`, a checklist for one-handed use on a phone
+- Checking off an item adds the amount to the pantry, and unchecking it reverses that unless the item has been recounted since
+- Export the list by copying, printing or sharing it. This is the manual fallback until a retailer integration exists
 - Local browser persistence, search, empty states
 - Demonstration GET `/api/items` endpoint (seed data only)
 

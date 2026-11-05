@@ -7,6 +7,8 @@ import { CategoryGlyph } from '../components/CategoryGlyph';
 import { FoodIcon } from '../components/icons/FoodIcon';
 import { ItemFormDialog, type ItemFormTarget } from '../components/ItemFormDialog';
 import { QuantityInput } from '../components/QuantityInput';
+import { ShoppingExportDialog, ShoppingPrintSheet } from '../components/shopping/ShoppingExport';
+import { ShoppingListPanel } from '../components/shopping/ShoppingListPanel';
 import {
   Badge,
   Button,
@@ -44,7 +46,7 @@ import {
 } from '../lib/pantry';
 import type { BadgeTone } from '../lib/tokens';
 
-type InventoryTab = 'pantry' | 'cart';
+type InventoryTab = 'pantry' | 'list';
 
 const RECOMMENDATION_BADGE: Record<RecommendationKind, {tone: BadgeTone; label: string}> = {
   'below-threshold': {tone: 'warning', label: 'Restock'},
@@ -71,13 +73,21 @@ export default function Home() {
     now,
     items,
     recommendations,
-    cartItems,
+    lines,
+    autoAdd,
+    setAutoAdd,
     undoNotice,
     undoLast,
     dismissUndo,
-    isInCart,
-    addToCart,
-    removeFromCart,
+    isOnList,
+    addToList,
+    addOneOff,
+    removeFromList,
+    editEntry,
+    setEntryAmount,
+    stepEntryAmount,
+    toggleBought,
+    clearBought,
     addItem,
     editItem,
     removeItem,
@@ -90,11 +100,13 @@ export default function Home() {
   const [sort, setSort] = useState<SortKey>('department');
   const [lowStockOnly, setLowStockOnly] = useState(false);
   const [formTarget, setFormTarget] = useState<ItemFormTarget | null>(null);
+  const [exportOpen, setExportOpen] = useState(false);
   const inventoryRef = useRef<HTMLDivElement>(null);
   const tabsId = useId();
 
   const visible = sortItems(filterItems(items, {query, category, lowStockOnly, now}), sort, now);
   const count = (value: number) => (ready ? value : '–');
+  const toBuy = lines.filter((line) => !line.bought);
 
   return (
     <>
@@ -123,14 +135,21 @@ export default function Home() {
           <StatRow>
             <Stat label="In your pantry" value={count(items.length)} />
             <Stat label="Restock suggestions" value={count(recommendations.length)} />
-            <Stat label="On shopping list" value={count(cartItems.length)} />
+            <Stat label="On shopping list" value={count(toBuy.length)} />
           </StatRow>
 
           <Card>
             <CardHeader
               eyebrow="Smart replenishment"
               title="Running low"
-              action={<span className="caption">Based on thresholds & estimated daily use</span>}
+              action={
+                <div className="card__header-actions">
+                  <span className="caption">Based on thresholds & estimated daily use</span>
+                  <Chip selected={autoAdd} onClick={() => setAutoAdd(!autoAdd)}>
+                    Auto-add to list
+                  </Chip>
+                </div>
+              }
             />
             {!ready ? (
               <ItemRowSkeleton rows={3} label="Loading restock suggestions" />
@@ -146,7 +165,7 @@ export default function Home() {
             ) : (
               <ItemList>
                 {recommendations.map(({item, daysLeft, kind}) => {
-                  const added = isInCart(item.id);
+                  const added = isOnList(item.id);
                   const badge = RECOMMENDATION_BADGE[kind];
                   return (
                     <ItemRow
@@ -165,7 +184,7 @@ export default function Home() {
                           size="sm"
                           disabled={added}
                           leadingIcon={added ? <Check size={14} /> : undefined}
-                          onClick={() => addToCart(item.id)}
+                          onClick={() => addToList(item.id)}
                         >
                           {added ? 'Added' : 'Add to list'}
                         </Button>
@@ -189,7 +208,7 @@ export default function Home() {
                   onChange={setTab}
                   options={[
                     {id: 'pantry', label: 'Pantry'},
-                    {id: 'cart', label: `Shopping list (${cartItems.length})`},
+                    {id: 'list', label: `Shopping list (${toBuy.length})`},
                   ]}
                 />
               }
@@ -309,33 +328,19 @@ export default function Home() {
                   )}
                 </TabPanel>
               ) : (
-                <TabPanel idBase={tabsId} tabId="cart">
-                  {cartItems.length === 0 ? (
-                    <EmptyState icon={<ShoppingBag size={22} />} title="Your shopping list is empty">
-                      Add a recommended item above, or bump a quantity until it needs restocking.
-                    </EmptyState>
-                  ) : (
-                    <ItemList>
-                      {cartItems.map((item) => (
-                        <ItemRow
-                          key={item.id}
-                          icon={<CategoryGlyph category={item.category} icon={item.icon} />}
-                          title={item.name}
-                          meta="Ready to purchase — no order has been placed"
-                          actions={
-                            <Button
-                              variant="danger"
-                              size="sm"
-                              aria-label={`Remove ${item.name}`}
-                              onClick={() => removeFromCart(item.id)}
-                            >
-                              Remove
-                            </Button>
-                          }
-                        />
-                      ))}
-                    </ItemList>
-                  )}
+                <TabPanel idBase={tabsId} tabId="list">
+                  <ShoppingListPanel
+                    ready={ready}
+                    lines={lines}
+                    onExport={() => setExportOpen(true)}
+                    onAddOneOff={addOneOff}
+                    onEdit={editEntry}
+                    onRemove={removeFromList}
+                    onToggleBought={toggleBought}
+                    onStepAmount={stepEntryAmount}
+                    onSetAmount={setEntryAmount}
+                    onClearBought={clearBought}
+                  />
                   <p className="disclaimer">
                     Cart integration is not connected. This is a local shopping list only.
                   </p>
@@ -351,6 +356,8 @@ export default function Home() {
         onEdit={editItem}
         onClose={() => setFormTarget(null)}
       />
+      <ShoppingExportDialog open={exportOpen} lines={toBuy} onClose={() => setExportOpen(false)} />
+      <ShoppingPrintSheet lines={toBuy} />
       <Toast
         message={undoNotice?.message ?? null}
         updateKey={undoNotice?.seq}

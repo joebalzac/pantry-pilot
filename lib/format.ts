@@ -13,7 +13,7 @@ export function formatCompact(value: number): string {
 
 export function formatQuantity(value: number, unit: string): string {
   const amount = Math.abs(value) < 100_000 ? quantity.format(value) : compact.format(value);
-  return `${amount} ${unit}`;
+  return `${amount} ${unit}`.trim();
 }
 
 export function formatDaysLeft(days: number): string {

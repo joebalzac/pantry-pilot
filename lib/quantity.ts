@@ -1,5 +1,5 @@
 /** Largest value the inline quantity field can show without overflowing. */
-const MAX_QUANTITY = 99_999;
+export const MAX_QUANTITY = 99_999;
 
 const DEFAULT_STEP = 1;
 
@@ -20,6 +20,19 @@ const UNIT_STEPS: Record<string, number> = {
   bag: 0.5,
 };
 
+/**
+ * What a store sells, where that differs from how the unit is used up. A bottle is
+ * counted in quarters at home but bought whole.
+ */
+const PURCHASE_STEPS: Record<string, number> = {
+  gallons: 0.5,
+  gallon: 0.5,
+  bottles: 1,
+  bottle: 1,
+  bags: 1,
+  bag: 1,
+};
+
 /** Suggestions for the unit field. It still accepts any text. */
 export const COMMON_UNITS = ['bags', 'bottles', 'boxes', 'cans', 'cups', 'gallons', 'kg', 'lb', 'liters', 'oz', 'packs'];
 
@@ -38,6 +51,10 @@ export function roundQuantity(value: number): number {
 
 export function stepForUnit(unit: string): number {
   return UNIT_STEPS[unit.trim().toLowerCase()] ?? DEFAULT_STEP;
+}
+
+export function purchaseStepForUnit(unit: string): number {
+  return PURCHASE_STEPS[unit.trim().toLowerCase()] ?? stepForUnit(unit);
 }
 
 /** The next multiple of `step` above or below `value`, so 0.4 steps to 0.25 or 0.5. */

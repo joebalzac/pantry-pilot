@@ -53,7 +53,7 @@ export const initialItems: PantryItem[] = [
   {id: 'soup', name: 'Tomato Basil Soup', category: 'prepared', icon: 'bowl', quantity: 1, unit: 'cups', reorderAt: 1, dailyUse: 0.4, lastUpdated: now()},
 ];
 
-function isAmount(value: unknown): value is number {
+export function isAmount(value: unknown): value is number {
   return typeof value === 'number' && Number.isFinite(value) && value >= 0;
 }
 

@@ -1,6 +1,7 @@
 export { Badge, type BadgeProps } from './Badge';
-export { Button, type ButtonProps } from './Button';
+export { Button, ButtonLink, type ButtonLinkProps, type ButtonProps } from './Button';
 export { Card, CardHeader, type CardHeaderProps, type CardProps } from './Card';
+export { CheckRow, type CheckRowProps } from './CheckRow';
 export {
   Chip,
   ChipGroup,

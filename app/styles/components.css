@@ -94,6 +94,10 @@
   --button-font-size: var(--button-font-size-lg);
 }
 
+.btn[href] {
+  text-decoration: none;
+}
+
 .btn__icon {
   display: inline-flex;
   flex-shrink: 0;
@@ -442,6 +446,223 @@
   gap: var(--item-row-actions-gap);
   flex-shrink: 0;
   margin-left: auto;
+}
+
+/* --- Check row ------------------------------------------------------------ */
+.check-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--check-row-gap);
+  padding: var(--check-row-padding-y) 0;
+  border-top: var(--check-row-border-width) solid var(--check-row-border);
+}
+
+.check-row:first-child {
+  border-top: 0;
+}
+
+.check-row__main {
+  /* The whole label toggles, so the target is the row and not just the box. */
+  display: flex;
+  flex: 1 1 var(--check-row-main-min);
+  align-items: center;
+  gap: var(--check-row-gap);
+  min-width: 0;
+  min-height: var(--check-row-min-height);
+  cursor: pointer;
+}
+
+.check-row__box {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--check-box-size);
+  height: var(--check-box-size);
+  margin: 0;
+  appearance: none;
+  border: var(--check-box-border-width) solid var(--check-box-border);
+  border-radius: var(--check-box-radius);
+  background: var(--check-box-bg);
+  cursor: pointer;
+  transition: var(--check-box-transition);
+}
+
+.check-row__box::before {
+  content: '';
+  width: 30%;
+  height: 55%;
+  margin-top: -10%;
+  border: solid var(--check-box-mark);
+  border-width: 0 var(--check-box-mark-width) var(--check-box-mark-width) 0;
+  transform: rotate(45deg);
+  visibility: hidden;
+}
+
+.check-row__box:checked {
+  border-color: var(--check-box-checked-bg);
+  background: var(--check-box-checked-bg);
+}
+
+.check-row__box:checked::before {
+  visibility: visible;
+}
+
+.check-row__body {
+  display: block;
+  min-width: 0;
+}
+
+.check-row__title {
+  display: block;
+  overflow-wrap: anywhere;
+  font-weight: var(--check-row-title-weight);
+}
+
+.check-row[data-checked] .check-row__title {
+  color: var(--check-row-checked-fg);
+  text-decoration: line-through;
+}
+
+.check-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--check-row-meta-gap);
+  margin-top: var(--check-row-meta-margin);
+  font-size: var(--check-row-meta-size);
+  color: var(--check-row-meta-fg);
+  overflow-wrap: anywhere;
+}
+
+.check-row__note {
+  display: block;
+  margin-top: var(--check-row-meta-margin);
+  font-size: var(--check-row-meta-size);
+  font-style: italic;
+  color: var(--check-row-meta-fg);
+  overflow-wrap: anywhere;
+}
+
+.check-row__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--item-row-actions-gap);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* --- Shopping list -------------------------------------------------------- */
+.shopping-group + .shopping-group {
+  margin-top: var(--shopping-group-gap);
+}
+
+.shopping-group__heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-gap-xs);
+  padding-bottom: var(--space-gap-xs);
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+  font-size: var(--font-size-control);
+  font-weight: var(--font-weight-heading);
+}
+
+.shopping-group__left {
+  margin-left: auto;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-body);
+  color: var(--color-text-secondary);
+}
+
+.shopping-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--toolbar-row-gap);
+  margin-bottom: var(--toolbar-margin);
+}
+
+.shopping-hint {
+  margin-bottom: var(--space-gap-md);
+}
+
+.card__header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--toolbar-row-gap);
+}
+
+.export-text {
+  height: auto;
+  padding: var(--space-gap-sm) var(--field-padding-x);
+  resize: vertical;
+  font-size: var(--font-size-control);
+}
+
+.export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--item-row-actions-gap);
+}
+
+.export-actions__close {
+  margin-left: auto;
+}
+
+/* --- Printed shopping list ------------------------------------------------ */
+.print-sheet {
+  display: none;
+}
+
+/* ShoppingExportDialog sets data-print for one print job, so ordinary printing is unchanged. */
+@media print {
+  html[data-print='shopping-list'] body {
+    background: none;
+  }
+
+  html[data-print='shopping-list'] body > *:not(.print-sheet) {
+    display: none;
+  }
+
+  html[data-print='shopping-list'] .print-sheet {
+    display: block;
+    color: black;
+  }
+
+  .print-sheet h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .print-sheet h2 {
+    margin: 1rem 0 0.25rem;
+    font-size: 1rem;
+    break-after: avoid;
+  }
+
+  .print-sheet ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .print-sheet li {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    break-inside: avoid;
+  }
+
+  /* Drawn with a border, because browsers drop background colors when printing by default. */
+  .print-sheet li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-top: 0.2rem;
+    border: 1px solid black;
+  }
 }
 
 /* --- Stepper -------------------------------------------------------------- */
