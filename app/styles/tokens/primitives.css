@@ -1,0 +1,206 @@
+/* =============================================================================
+   Layer 1 · Primitive tokens
+   Raw values named by what they *are* (green-700, space-4), not what they mean.
+   Only semantic.css and component.css may reference these.
+   ========================================================================== */
+
+:root {
+  /* Color ramps · Whole Foods wordmark green + department palette */
+  --green-50: #e7f6ee;
+  --green-100: #ccead8;
+  --green-200: #a3d4b8;
+  --green-300: #6fb890;
+  --green-400: #3d8f63;
+  --green-500: #217a51;
+  --green-600: #0e6b47;
+  --green-700: #00674b;
+  --green-800: #004c3f;
+  --green-900: #12352c;
+  --green-950: #0b1f1a;
+
+  --sage-50: #f3f5f2;
+  --sage-100: #e4e9e2;
+  --sage-200: #c9d2c6;
+  --sage-300: #9aa69c;
+  --sage-400: #7b8a7e;
+  --sage-500: #607067;
+  --sage-600: #4c5a52;
+  --sage-700: #3b4640;
+  --sage-800: #2a322e;
+  --sage-900: #1b211e;
+
+  --lime-50: #f3fbe8;
+  --lime-100: #e0f5c4;
+  --lime-200: #c5ec8e;
+  --lime-300: #a6e05d;
+  --lime-400: #8ce054;
+  --lime-500: #67b434;
+  --lime-600: #4f8f28;
+  --lime-700: #3c6d1e;
+
+  --cream-50: #fffdf8;
+  --cream-100: #f7f3ea;
+  --cream-200: #ebe4d4;
+  --cream-300: #d9cfb8;
+  --cream-400: #c4b79a;
+
+  --ink-50: #f6f6f6;
+  --ink-100: #e8e8e8;
+  --ink-200: #cfcfcf;
+  --ink-800: #2c2c2c;
+  --ink-900: #1a1a1a;
+  --ink-950: #111111;
+
+  --white: #ffffff;
+  --black: #000000;
+  --transparent: transparent;
+
+  --yellow-50: #fff9d6;
+  --yellow-100: #fff1a3;
+  --yellow-400: #ffd806;
+  --yellow-500: #efcc07;
+  --yellow-700: #8a6a00;
+  --yellow-800: #5c4800;
+
+  --orange-50: #fff1de;
+  --orange-100: #ffd9a8;
+  --orange-400: #ffa324;
+  --orange-500: #f29314;
+  --orange-700: #9a5408;
+
+  --red-50: #fdeaea;
+  --red-100: #f8c9c9;
+  --red-400: #ed4c4c;
+  --red-500: #d83030;
+  --red-700: #9b1d1d;
+
+  --blue-50: #e7f4ff;
+  --blue-100: #c5e4ff;
+  --blue-400: #70bcff;
+  --blue-500: #3a9ef0;
+  --blue-700: #1d5f96;
+
+  --tan-50: #f6eee9;
+  --tan-100: #ead9d0;
+  --tan-300: #d5b9aa;
+  --tan-400: #bfa093;
+  --tan-700: #6e5248;
+
+  --brown-50: #f3ebe3;
+  --brown-700: #6b4f3a;
+
+  /* Type scale */
+  --font-family-sans: var(--font-nunito), 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-family-display: var(--font-fraunces), 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  --font-size-heading-floor: 2.5rem;
+  --font-size-3xs: 0.625rem;
+  --font-size-2xs: 0.6875rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-md: 0.9375rem;
+  --font-size-lg: 1.0625rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.625rem;
+  --font-size-3xl: 2.125rem;
+  --font-size-4xl: 3.25rem;
+  --font-size-5xl: 4.5rem;
+  --font-size-6xl: 4.25rem;
+  --font-size-stamp-sm: 2.75rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-none: 1;
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --letter-spacing-tighter: -0.04em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-snug: 0.01em;
+  --letter-spacing-wide: 0.08em;
+  --letter-spacing-wider: 0.14em;
+  --letter-spacing-widest: 0.2em;
+
+  /* Space · 4px base grid */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-10: 4rem;
+  --space-11: 5rem;
+  --space-12: 6.5rem;
+
+  --size-control-sm: 2rem;
+  --size-control-md: 2.5rem;
+  --size-control-lg: 3rem;
+  --size-icon-sm: 1.25rem;
+  --size-icon-md: 1.5rem;
+  --size-icon-lg: 2rem;
+  --size-icon-xl: 2.5rem;
+  --size-well-sm: 2.25rem;
+  --size-well-md: 3rem;
+  --size-well-lg: 3.5rem;
+  --size-stamp: 11rem;
+  --size-stamp-compact: 7.25rem;
+  --size-brand-mark: 2rem;
+  --size-empty-icon: 4rem;
+  --size-stamp-label: 7.5rem;
+  --size-max-content: 70rem;
+  --size-prose: 36rem;
+  --size-field-icon-offset: 2.75rem;
+
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 999px;
+
+  --border-width-hairline: 1px;
+  --border-width-thick: 2px;
+  --border-width-heavy: 3px;
+  --border-width-stamp: 6px;
+  --border-width-stamp-compact: 4px;
+
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgb(11 31 26 / 0.06);
+  --shadow-sm: 0 1px 3px rgb(11 31 26 / 0.08), 0 1px 2px rgb(11 31 26 / 0.04);
+  --shadow-md: 0 8px 24px rgb(11 31 26 / 0.08);
+  --shadow-focus: 0 0 0 3px rgb(0 103 75 / 0.28);
+
+  --opacity-0: 0;
+  --opacity-50: 0.5;
+  --opacity-55: 0.55;
+  --opacity-62: 0.62;
+  --opacity-100: 1;
+
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 180ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 20;
+  --z-overlay: 40;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+  }
+}

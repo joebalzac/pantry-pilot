@@ -1,0 +1,411 @@
+/* =============================================================================
+   Layer 3 · Component tokens
+   Named by component + property (+ variant). CSS recipes bind to these only.
+   May only reference semantic tokens (or other component tokens).
+   Variant switches remap local aliases (--button-bg) onto these recipes.
+   ========================================================================== */
+
+:root {
+  /* Button */
+  --button-height-sm: var(--control-height-sm);
+  --button-height-md: var(--control-height-md);
+  --button-height-lg: var(--control-height-lg);
+  --button-padding-sm: var(--control-padding-sm);
+  --button-padding-md: var(--control-padding-md);
+  --button-padding-lg: var(--control-padding-lg);
+  --button-radius-sm: var(--radius-control-sm);
+  --button-radius-md: var(--radius-control);
+  --button-font-size-sm: var(--font-size-caption);
+  --button-font-size-md: var(--font-size-control);
+  --button-font-size-lg: var(--font-size-body);
+  --button-font-weight: var(--font-weight-label);
+  --button-letter-spacing: var(--letter-spacing-control);
+  --button-gap: var(--space-gap-xs);
+  --button-border-width: var(--border-width-default);
+  --button-disabled-opacity: var(--opacity-disabled);
+  --button-transition: background var(--motion-fast), border-color var(--motion-fast),
+    color var(--motion-fast), opacity var(--motion-fast), transform var(--motion-fast);
+
+  --button-primary-bg: var(--color-action-primary);
+  --button-primary-bg-hover: var(--color-action-primary-hover);
+  --button-primary-bg-pressed: var(--color-action-primary-pressed);
+  --button-primary-fg: var(--color-text-on-action);
+  --button-primary-border: var(--color-transparent);
+
+  --button-secondary-bg: var(--color-action-secondary);
+  --button-secondary-bg-hover: var(--color-action-secondary-hover);
+  --button-secondary-bg-pressed: var(--color-action-secondary-pressed);
+  --button-secondary-fg: var(--color-action-secondary-text);
+  --button-secondary-border: var(--color-action-secondary-border);
+
+  --button-outline-bg: var(--color-bg-surface);
+  --button-outline-bg-hover: var(--color-bg-sunken);
+  --button-outline-fg: var(--color-text-primary);
+  --button-outline-border: var(--color-border-default);
+
+  --button-ghost-bg: var(--color-transparent);
+  --button-ghost-bg-hover: var(--color-action-ghost-hover);
+  --button-ghost-fg: var(--color-text-secondary);
+  --button-ghost-fg-hover: var(--color-text-primary);
+  --button-ghost-border: var(--color-transparent);
+
+  --button-danger-bg: var(--color-action-danger-soft);
+  --button-danger-bg-hover: var(--color-action-danger-soft-hover);
+  --button-danger-fg: var(--color-action-danger-text);
+  --button-danger-border: var(--color-action-danger-border);
+
+  /* Card */
+  --card-bg: var(--color-bg-surface);
+  --card-border-color: var(--color-border-subtle);
+  --card-border-width: var(--border-width-default);
+  --card-radius: var(--radius-container);
+  --card-shadow: var(--elevation-surface);
+  --card-padding-sm: var(--space-inset-sm);
+  --card-padding-md: var(--space-inset-lg);
+  --card-padding-lg: var(--space-inset-xl);
+  --card-padding-compact: var(--space-inset-md);
+  --card-header-gap: var(--space-gap-md);
+  --card-header-margin: var(--space-inset-md);
+  --card-header-title-gap: var(--space-stack-xs);
+
+  /* Badge */
+  --badge-height: 1.5rem;
+  --badge-padding-x: var(--space-inset-xs);
+  --badge-gap: var(--space-gap-2xs);
+  --badge-radius: var(--radius-full);
+  --badge-font-size: var(--font-size-label);
+  --badge-font-weight: var(--font-weight-label);
+  --badge-letter-spacing: var(--letter-spacing-label);
+  --badge-neutral-bg: var(--color-bg-sunken);
+  --badge-neutral-fg: var(--color-text-secondary);
+  --badge-brand-bg: var(--color-action-secondary);
+  --badge-brand-fg: var(--color-action-secondary-text);
+  --badge-success-bg: var(--color-feedback-success-soft);
+  --badge-success-fg: var(--color-feedback-success);
+  --badge-warning-bg: var(--color-feedback-warning-soft);
+  --badge-warning-fg: var(--color-feedback-warning);
+  --badge-danger-bg: var(--color-feedback-danger-soft);
+  --badge-danger-fg: var(--color-feedback-danger);
+  --badge-info-bg: var(--color-feedback-info-soft);
+  --badge-info-fg: var(--color-feedback-info);
+
+  /* Chip */
+  --chip-height: 2.25rem;
+  --chip-padding-x: var(--space-gap-sm);
+  --chip-gap: var(--space-gap-xs);
+  --chip-radius: var(--radius-full);
+  --chip-border-width: var(--border-width-default);
+  --chip-font-size: var(--font-size-caption);
+  --chip-font-weight: var(--font-weight-label);
+  --chip-bg: var(--color-bg-surface);
+  --chip-fg: var(--color-text-secondary);
+  --chip-border: var(--color-border-default);
+  --chip-hover-border: var(--category-accent);
+  --chip-hover-fg: var(--category-ink);
+  --chip-selected-bg: var(--category-soft);
+  --chip-selected-border: var(--category-accent);
+  --chip-selected-fg: var(--category-ink);
+  --chip-selected-all-bg: var(--color-bg-brand);
+  --chip-selected-all-border: var(--color-bg-brand);
+  --chip-selected-all-fg: var(--color-text-on-brand);
+  --chip-transition: background var(--motion-fast), border-color var(--motion-fast),
+    color var(--motion-fast);
+
+  /* Tabs */
+  --tabs-padding: var(--space-inset-2xs);
+  --tabs-radius: var(--radius-control-lg);
+  --tabs-bg: var(--color-bg-sunken);
+  --tabs-tab-height: var(--control-height-sm);
+  --tabs-tab-padding-x: var(--space-gap-md);
+  --tabs-tab-radius: var(--radius-control);
+  --tabs-tab-font-size: var(--font-size-caption);
+  --tabs-tab-font-weight: var(--font-weight-control);
+  --tabs-tab-fg: var(--color-text-secondary);
+  --tabs-tab-active-bg: var(--color-bg-surface);
+  --tabs-tab-active-fg: var(--color-text-primary);
+  --tabs-tab-active-weight: var(--font-weight-label);
+  --tabs-tab-active-shadow: var(--elevation-raised);
+
+  /* Text field */
+  --field-height: var(--control-height-lg);
+  --field-padding-x: var(--space-gap-md);
+  --field-padding-icon: var(--size-control-icon-offset);
+  --field-radius: var(--radius-control-lg);
+  --field-border-width: var(--border-width-default);
+  --field-bg: var(--color-bg-surface);
+  --field-fg: var(--color-text-primary);
+  --field-placeholder: var(--color-text-tertiary);
+  --field-border: var(--color-border-default);
+  --field-border-focus: var(--color-border-focus);
+  --field-shadow-focus: var(--elevation-focus);
+  --field-icon-fg: var(--color-text-tertiary);
+  --field-icon-inset: var(--space-gap-md);
+  --field-label-size: var(--font-size-control);
+  --field-label-weight: var(--font-weight-label);
+  --field-label-fg: var(--color-text-secondary);
+  --field-label-gap: var(--space-gap-xs);
+  --field-border-invalid: var(--color-feedback-danger);
+  --field-message-size: var(--font-size-caption);
+  --field-message-fg: var(--color-text-secondary);
+  --field-message-gap: var(--space-gap-2xs);
+  --field-error-fg: var(--color-action-danger-text);
+
+  /* Stat */
+  --stat-bg: var(--color-bg-surface);
+  --stat-border-color: var(--color-border-subtle);
+  --stat-border-width: var(--border-width-default);
+  --stat-radius: var(--radius-container);
+  --stat-shadow: var(--elevation-surface);
+  --stat-padding-y: var(--space-inset-lg);
+  --stat-padding-x: var(--space-inset-xl);
+  --stat-padding-compact: var(--space-inset-md);
+  --stat-gap: var(--space-gap-xs);
+  --stat-min-width: 10rem;
+  --stat-label-size: var(--font-size-label);
+  --stat-label-weight: var(--font-weight-label);
+  --stat-label-tracking: var(--letter-spacing-kicker);
+  --stat-label-fg: var(--color-text-tertiary);
+  --stat-value-size: var(--font-size-stat);
+  --stat-value-size-compact: var(--font-size-stat-compact);
+  --stat-value-weight: var(--font-weight-display);
+  --stat-value-tracking: var(--letter-spacing-heading);
+  --stat-value-leading: var(--line-height-flush);
+
+  /* Icon well */
+  --icon-well-size-sm: var(--size-container-icon-sm);
+  --icon-well-size-md: var(--size-container-icon-md);
+  --icon-well-size-lg: var(--size-container-icon-lg);
+  --icon-well-radius-sm: var(--radius-control);
+  --icon-well-radius-md: var(--radius-control-lg);
+  --icon-well-bg: var(--category-soft);
+  --icon-well-fg: var(--category-ink);
+
+  /* Item row */
+  --item-row-gap: var(--space-gap-md);
+  --item-row-padding-y: var(--space-gap-md);
+  --item-row-border: var(--color-border-subtle);
+  --item-row-border-width: var(--border-width-default);
+  --item-row-title-weight: var(--font-weight-heading);
+  --item-row-meta-margin: var(--space-stack-xs);
+  --item-row-meta-gap: var(--space-gap-xs);
+  --item-row-meta-size: var(--font-size-caption);
+  --item-row-meta-fg: var(--color-text-secondary);
+  --item-row-qty-size: var(--font-size-control);
+  --item-row-qty-weight: var(--font-weight-emphasis);
+  --item-row-qty-fg: var(--color-text-secondary);
+  --item-row-qty-max: 14ch;
+  --item-row-body-min: 8rem;
+  --item-row-title-lines: 2;
+  --item-row-actions-gap: var(--space-gap-xs);
+  --item-row-actions-indent: calc(var(--icon-well-size-md) + var(--item-row-gap));
+
+  /* Stepper */
+  --stepper-gap: var(--space-gap-2xs);
+  --stepper-control-size: var(--control-height-sm);
+  --stepper-input-width: 4rem;
+  --stepper-input-radius: var(--radius-control-sm);
+  --stepper-input-border: var(--color-border-default);
+  --stepper-input-border-width: var(--border-width-default);
+  --stepper-input-bg: var(--color-bg-surface);
+  --stepper-input-font-size: var(--font-size-caption);
+  --stepper-input-border-focus: var(--color-border-focus);
+  --stepper-input-shadow-focus: var(--elevation-focus);
+  --stepper-input-border-invalid: var(--color-feedback-danger);
+
+  /* Dialog */
+  --dialog-width: 30rem;
+  --dialog-gutter: var(--space-gap-md);
+  --dialog-padding: var(--space-inset-lg);
+  --dialog-radius: var(--radius-container);
+  --dialog-bg: var(--color-bg-surface);
+  --dialog-fg: var(--color-text-primary);
+  --dialog-border: var(--color-border-subtle);
+  --dialog-border-width: var(--border-width-default);
+  --dialog-shadow: var(--elevation-overlay);
+  --dialog-backdrop: color-mix(in srgb, var(--color-bg-inverse) 45%, transparent);
+  --dialog-title-margin: var(--space-gap-md);
+  --item-form-gap: var(--space-gap-md);
+
+  /* Toast */
+  --toast-z: var(--layer-overlay);
+  --toast-inset: var(--space-gap-md);
+  --toast-max-width: 32rem;
+  --toast-gap: var(--space-gap-sm);
+  --toast-padding: var(--space-gap-sm) var(--space-gap-md);
+  --toast-radius: var(--radius-control-lg);
+  --toast-bg: var(--color-bg-surface);
+  --toast-fg: var(--color-text-primary);
+  --toast-border: var(--color-border-strong);
+  --toast-border-width: var(--border-width-default);
+  --toast-shadow: var(--elevation-overlay);
+  --toast-font-size: var(--font-size-control);
+  --toast-message-min: 10rem;
+
+  /* Empty state */
+  --empty-padding-y: var(--space-inset-2xl);
+  --empty-padding-x: var(--space-inset-sm);
+  --empty-fg: var(--color-text-secondary);
+  --empty-icon-size: var(--size-empty-well);
+  --empty-icon-radius: var(--radius-container-lg);
+  --empty-icon-bg: var(--color-bg-sunken);
+  --empty-icon-fg: var(--color-text-brand);
+  --empty-icon-margin: var(--space-gap-md);
+  --empty-title-weight: var(--font-weight-heading);
+  --empty-title-fg: var(--color-text-primary);
+  --empty-copy-size: var(--font-size-control);
+  --empty-copy-gap: var(--space-gap-xs);
+
+  /* Error state */
+  --error-state-padding-y: var(--space-inset-2xl);
+  --error-state-padding-x: var(--space-inset-sm);
+  --error-state-fg: var(--color-text-secondary);
+  --error-state-icon-size: var(--size-empty-well);
+  --error-state-icon-radius: var(--radius-container-lg);
+  --error-state-icon-bg: var(--color-feedback-danger-soft);
+  --error-state-icon-fg: var(--color-action-danger-text);
+  --error-state-icon-margin: var(--space-gap-md);
+  --error-state-title-weight: var(--font-weight-heading);
+  --error-state-title-fg: var(--color-text-primary);
+  --error-state-copy-size: var(--font-size-control);
+  --error-state-copy-gap: var(--space-gap-xs);
+  --error-state-copy-max: 28rem;
+  --error-state-actions-gap: var(--space-gap-xs);
+  --error-state-actions-margin: var(--space-gap-md);
+  --error-state-reference-size: var(--font-size-caption);
+  --error-state-reference-fg: var(--color-text-secondary);
+
+  /* Notice */
+  --notice-gap: var(--space-gap-sm);
+  --notice-padding: var(--space-gap-sm) var(--space-gap-md);
+  --notice-radius: var(--radius-control);
+  --notice-font-size: var(--font-size-control);
+  --notice-copy-min: 12rem;
+  --notice-danger-bg: var(--color-feedback-danger-soft);
+  --notice-danger-fg: var(--color-action-danger-text);
+  --notice-info-bg: var(--color-feedback-info-soft);
+  --notice-info-fg: var(--color-feedback-info);
+
+  /* Skeleton */
+  --skeleton-bg: var(--color-border-subtle);
+  --skeleton-radius: var(--radius-control-sm);
+  --skeleton-line-height: 0.875rem;
+  --skeleton-gap: var(--space-gap-xs);
+  --skeleton-duration: 1.2s;
+  --skeleton-pulse-opacity: 0.45;
+
+  /* Stamp */
+  --stamp-size: var(--size-hero-stamp);
+  --stamp-size-compact: var(--size-hero-stamp-compact);
+  --stamp-bg: var(--color-dept-produce);
+  --stamp-fg: var(--color-bg-brand);
+  --stamp-border-color: var(--color-bg-brand);
+  --stamp-border-width: var(--border-width-emphasis);
+  --stamp-border-width-compact: var(--border-width-emphasis-compact);
+  --stamp-radius: var(--radius-full);
+  --stamp-shadow: var(--elevation-raised);
+  --stamp-gap: var(--space-gap-2xs);
+  --stamp-value-font: var(--font-display);
+  --stamp-value-size: var(--font-size-stamp);
+  --stamp-value-size-compact: var(--font-size-stamp-compact);
+  --stamp-value-leading: var(--line-height-flush);
+  --stamp-value-weight: var(--font-weight-heading);
+  --stamp-label-size: var(--font-size-caption);
+  --stamp-label-size-compact: var(--font-size-micro);
+  --stamp-label-weight: var(--font-weight-label);
+  --stamp-label-tracking: var(--letter-spacing-label);
+  --stamp-label-leading: var(--line-height-compact);
+  --stamp-label-max: var(--size-stamp-copy);
+
+  /* Brand / header / chrome */
+  --brand-gap: var(--space-gap-xs);
+  --brand-mark-fg: var(--color-dept-produce);
+  --brand-wordmark-size: var(--font-size-heading-sm);
+  --brand-wordmark-weight: var(--font-weight-display);
+  --brand-wordmark-tracking: var(--letter-spacing-heading);
+
+  --header-bg: var(--color-bg-brand);
+  --header-fg: var(--color-text-on-brand);
+  --header-muted: var(--color-text-on-brand-muted);
+  --header-z: var(--layer-sticky);
+  --header-padding-x: var(--layout-page-inset);
+  --header-padding-y: var(--layout-header-padding-y);
+  --header-nav-gap: var(--space-gap-lg);
+  --header-link-size: var(--font-size-caption);
+  --header-link-weight: var(--font-weight-label);
+  --header-link-tracking: var(--letter-spacing-label);
+
+  --shell-max-width: var(--layout-max-width);
+  --shell-padding-x: var(--layout-page-inset);
+  --shell-padding-top: var(--space-stack-xl);
+  --shell-padding-bottom: var(--layout-page-padding-bottom);
+
+  --hero-gap: var(--space-gap-xl);
+  --hero-padding-y: var(--layout-hero-padding-y);
+  --hero-padding-bottom: var(--space-stack-xl);
+  --hero-copy-max: var(--layout-prose-width);
+  --hero-eyebrow-fg: var(--color-text-brand);
+  --hero-title-gap-top: var(--space-stack-sm);
+  --hero-title-gap-bottom: var(--space-inset-md);
+  --hero-emphasis-fg: var(--color-text-brand);
+  --hero-emphasis-font: var(--font-display);
+  --hero-emphasis-weight: var(--font-weight-emphasis);
+
+  --stack-gap: var(--layout-section-gap);
+  --chip-row-gap: var(--space-gap-xs);
+  --toolbar-gap: var(--space-gap-md);
+  --toolbar-margin: var(--space-gap-xs);
+  --toolbar-row-gap: var(--space-gap-sm);
+  --toolbar-sort-width: 14rem;
+
+  --footer-padding-x: var(--layout-page-inset);
+  --footer-padding-bottom: var(--space-inset-2xl);
+  --footer-size: var(--font-size-caption);
+  --footer-fg: var(--color-text-tertiary);
+  --footer-leading: var(--line-height-prose);
+
+  --disclaimer-margin: var(--space-inset-md);
+  --disclaimer-size: var(--font-size-caption);
+  --disclaimer-fg: var(--color-text-tertiary);
+
+  --eyebrow-size: var(--font-size-label);
+  --eyebrow-weight: var(--font-weight-display);
+  --eyebrow-tracking: var(--letter-spacing-overline);
+  --eyebrow-fg: var(--color-text-tertiary);
+
+  --heading-xl-size: var(--font-size-heading-lg);
+  --heading-xl-tracking: var(--letter-spacing-display);
+  --heading-xl-leading: var(--line-height-heading);
+  --heading-xl-weight: var(--font-weight-display);
+  --heading-lg-size: var(--font-size-heading-md);
+  --heading-lg-tracking: var(--letter-spacing-heading);
+  --heading-lg-weight: var(--font-weight-heading);
+
+  --body-lg-size: var(--font-size-body-lg);
+  --body-lg-leading: var(--line-height-prose);
+  --body-lg-fg: var(--color-text-secondary);
+  --caption-size: var(--font-size-caption);
+  --caption-fg: var(--color-text-tertiary);
+
+  --shell-padding-x-compact: var(--layout-page-inset-compact);
+  --hero-padding-y-compact: var(--layout-hero-padding-y-compact);
+  --hero-padding-bottom-compact: var(--space-stack-lg);
+}
+
+@media (max-width: 720px) {
+  :root {
+    --header-padding-x: var(--shell-padding-x-compact);
+    --shell-padding-x: var(--shell-padding-x-compact);
+    --footer-padding-x: var(--shell-padding-x-compact);
+    --hero-padding-y: var(--hero-padding-y-compact);
+    --hero-padding-bottom: var(--hero-padding-bottom-compact);
+    --stamp-size: var(--stamp-size-compact);
+    --stamp-border-width: var(--stamp-border-width-compact);
+    --stamp-value-size: var(--stamp-value-size-compact);
+    --stamp-label-size: var(--stamp-label-size-compact);
+    --stat-value-size: var(--stat-value-size-compact);
+    --stat-padding-y: var(--stat-padding-compact);
+    --stat-padding-x: var(--stat-padding-compact);
+    --card-padding-md: var(--card-padding-compact);
+    --card-padding-lg: var(--card-padding-compact);
+  }
+}

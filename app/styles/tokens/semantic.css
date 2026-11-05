@@ -1,0 +1,244 @@
+/* =============================================================================
+   Layer 2 · Semantic tokens
+   Named by intent / role (background, text, action, feedback), not by hue.
+   May only reference primitive tokens. Components should prefer layer 3.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --color-transparent: var(--transparent);
+
+  --color-bg-canvas: var(--cream-100);
+  --color-bg-canvas-subtle: var(--cream-50);
+  --color-bg-surface: var(--white);
+  --color-bg-sunken: var(--sage-50);
+  --color-bg-brand: var(--green-800);
+  --color-bg-brand-strong: var(--green-900);
+  --color-bg-inverse: var(--green-950);
+  --color-bg-overlay: color-mix(in srgb, var(--green-950) 45%, transparent);
+  --color-bg-glow-produce: color-mix(in srgb, var(--lime-400) 16%, transparent);
+  --color-bg-glow-dairy: color-mix(in srgb, var(--yellow-400) 10%, transparent);
+
+  /* Text */
+  --color-text-primary: var(--ink-900);
+  --color-text-secondary: var(--sage-600);
+  --color-text-tertiary: var(--sage-400);
+  --color-text-inverse: var(--cream-50);
+  --color-text-brand: var(--green-700);
+  --color-text-on-brand: var(--white);
+  --color-text-on-brand-muted: color-mix(in srgb, var(--white) 62%, transparent);
+  --color-text-on-action: var(--white);
+  --color-text-accent: var(--green-400);
+
+  /* Border / focus */
+  --color-border-subtle: var(--sage-100);
+  --color-border-default: var(--sage-200);
+  --color-border-strong: var(--sage-300);
+  --color-border-brand: var(--green-700);
+  --color-border-focus: var(--green-600);
+  --color-focus-ring: var(--green-600);
+  --color-selection-bg: var(--lime-100);
+  --color-selection-text: var(--green-950);
+
+  /* Action · interactive intent */
+  --color-action-primary: var(--green-700);
+  --color-action-primary-hover: var(--green-800);
+  --color-action-primary-pressed: var(--green-900);
+  --color-action-secondary: var(--green-50);
+  --color-action-secondary-hover: var(--green-100);
+  --color-action-secondary-pressed: var(--green-200);
+  --color-action-secondary-text: var(--green-800);
+  --color-action-secondary-border: var(--green-200);
+  --color-action-ghost-hover: var(--sage-50);
+  --color-action-danger: var(--red-500);
+  --color-action-danger-hover: var(--red-700);
+  --color-action-danger-soft: var(--red-50);
+  --color-action-danger-soft-hover: var(--red-100);
+  --color-action-danger-text: var(--red-700);
+  --color-action-danger-border: var(--red-100);
+
+  /* Feedback · status intent */
+  --color-feedback-success: var(--green-600);
+  --color-feedback-success-soft: var(--green-50);
+  --color-feedback-warning: var(--orange-700);
+  --color-feedback-warning-soft: var(--orange-50);
+  --color-feedback-danger: var(--red-500);
+  --color-feedback-danger-soft: var(--red-50);
+  --color-feedback-info: var(--blue-700);
+  --color-feedback-info-soft: var(--blue-50);
+
+  /* Department wayfinding · not large surfaces */
+  --color-dept-produce: var(--lime-400);
+  --color-dept-produce-soft: var(--lime-50);
+  --color-dept-produce-ink: var(--lime-700);
+  --color-dept-dairy: var(--yellow-400);
+  --color-dept-dairy-soft: var(--yellow-50);
+  --color-dept-dairy-ink: var(--yellow-800);
+  --color-dept-meat: var(--red-500);
+  --color-dept-meat-soft: var(--red-50);
+  --color-dept-meat-ink: var(--red-700);
+  --color-dept-seafood: var(--blue-400);
+  --color-dept-seafood-soft: var(--blue-50);
+  --color-dept-seafood-ink: var(--blue-700);
+  --color-dept-bakery: var(--tan-300);
+  --color-dept-bakery-soft: var(--tan-50);
+  --color-dept-bakery-ink: var(--tan-700);
+  --color-dept-prepared: var(--orange-400);
+  --color-dept-prepared-soft: var(--orange-50);
+  --color-dept-prepared-ink: var(--orange-700);
+  --color-dept-pantry: var(--green-300);
+  --color-dept-pantry-soft: var(--green-50);
+  --color-dept-pantry-ink: var(--green-800);
+
+  --category-accent: var(--color-dept-pantry);
+  --category-soft: var(--color-dept-pantry-soft);
+  --category-ink: var(--color-dept-pantry-ink);
+
+  /* Type roles */
+  --font-body: var(--font-family-sans);
+  --font-display: var(--font-family-display);
+  --font-size-label: var(--font-size-2xs);
+  --font-size-caption: var(--font-size-xs);
+  --font-size-control: var(--font-size-sm);
+  --font-size-body: var(--font-size-md);
+  --font-size-body-lg: var(--font-size-lg);
+  --font-size-heading-sm: var(--font-size-xl);
+  --font-size-heading-md: var(--font-size-2xl);
+  --font-size-heading-lg: var(--font-size-5xl);
+  --font-size-stat: var(--font-size-3xl);
+  --font-size-stat-compact: var(--font-size-2xl);
+  --font-size-display: var(--font-size-6xl);
+  --font-size-stamp: var(--font-size-6xl);
+  --font-size-stamp-compact: var(--font-size-stamp-sm);
+  --font-size-micro: var(--font-size-3xs);
+  --font-weight-body: var(--font-weight-regular);
+  --font-weight-control: var(--font-weight-medium);
+  --font-weight-emphasis: var(--font-weight-semibold);
+  --font-weight-label: var(--font-weight-bold);
+  --font-weight-heading: var(--font-weight-bold);
+  --font-weight-display: var(--font-weight-extrabold);
+  --letter-spacing-control: var(--letter-spacing-snug);
+  --letter-spacing-label: var(--letter-spacing-wide);
+  --letter-spacing-kicker: var(--letter-spacing-wider);
+  --letter-spacing-overline: var(--letter-spacing-widest);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-display: var(--letter-spacing-tighter);
+  --line-height-flush: var(--line-height-none);
+  --line-height-compact: var(--line-height-snug);
+  --line-height-body: var(--line-height-normal);
+  --line-height-heading: var(--line-height-tight);
+  --line-height-prose: var(--line-height-relaxed);
+
+  /* Space roles */
+  --space-gap-2xs: var(--space-1);
+  --space-gap-xs: var(--space-2);
+  --space-gap-sm: var(--space-3);
+  --space-gap-md: var(--space-4);
+  --space-gap-lg: var(--space-6);
+  --space-gap-xl: var(--space-7);
+  --space-inset-2xs: var(--space-1);
+  --space-inset-xs: var(--space-2);
+  --space-inset-sm: var(--space-4);
+  --space-inset-md: var(--space-5);
+  --space-inset-lg: var(--space-6);
+  --space-inset-xl: var(--space-7);
+  --space-inset-2xl: var(--space-9);
+  --space-stack-xs: var(--space-1);
+  --space-stack-sm: var(--space-3);
+  --space-stack-md: var(--space-5);
+  --space-stack-lg: var(--space-6);
+  --space-stack-xl: var(--space-8);
+  --space-stack-2xl: var(--space-10);
+
+  /* Elevation / motion / opacity roles */
+  --radius-control-sm: var(--radius-xs);
+  --radius-control: var(--radius-sm);
+  --radius-control-lg: var(--radius-md);
+  --radius-container: var(--radius-lg);
+  --radius-container-lg: var(--radius-xl);
+  --radius-full: var(--radius-pill);
+  --border-width-default: var(--border-width-hairline);
+  --border-width-focus: var(--border-width-thick);
+  --font-size-heading-min: var(--font-size-heading-floor);
+  --border-width-emphasis: var(--border-width-stamp);
+  --border-width-emphasis-compact: var(--border-width-stamp-compact);
+  --size-control-icon-offset: var(--size-field-icon-offset);
+  --size-container-icon-sm: var(--size-well-sm);
+  --size-container-icon-md: var(--size-well-md);
+  --size-container-icon-lg: var(--size-well-lg);
+  --size-hero-stamp: var(--size-stamp);
+  --size-hero-stamp-compact: var(--size-stamp-compact);
+  --size-empty-well: var(--size-empty-icon);
+  --size-stamp-copy: var(--size-stamp-label);
+  --layer-sticky: var(--z-sticky);
+  --layer-overlay: var(--z-overlay);
+
+  --elevation-surface: var(--shadow-xs);
+  --elevation-raised: var(--shadow-sm);
+  --elevation-overlay: var(--shadow-md);
+  --elevation-focus: var(--shadow-focus);
+  --motion-fast: var(--motion-duration-fast) var(--motion-ease-out);
+  --opacity-disabled: var(--opacity-55);
+
+  /* Shared control geometry */
+  --control-height-sm: var(--size-control-sm);
+  --control-height-md: var(--size-control-md);
+  --control-height-lg: var(--size-control-lg);
+  --control-padding-sm: 0 var(--space-gap-sm);
+  --control-padding-md: 0 var(--space-gap-md);
+  --control-padding-lg: 0 var(--space-inset-md);
+
+  /* Layout roles */
+  --layout-max-width: var(--size-max-content);
+  --layout-prose-width: var(--size-prose);
+  --layout-page-inset: var(--space-7);
+  --layout-page-inset-compact: var(--space-4);
+  --layout-page-padding-bottom: var(--space-11);
+  --layout-header-padding-y: var(--space-4);
+  --layout-hero-padding-y: var(--space-10);
+  --layout-hero-padding-y-compact: var(--space-8);
+  --layout-section-gap: var(--space-6);
+  --layout-scroll-padding: var(--space-9);
+}
+
+[data-category='produce'] {
+  --category-accent: var(--color-dept-produce);
+  --category-soft: var(--color-dept-produce-soft);
+  --category-ink: var(--color-dept-produce-ink);
+}
+
+[data-category='dairy'] {
+  --category-accent: var(--color-dept-dairy);
+  --category-soft: var(--color-dept-dairy-soft);
+  --category-ink: var(--color-dept-dairy-ink);
+}
+
+[data-category='meat'] {
+  --category-accent: var(--color-dept-meat);
+  --category-soft: var(--color-dept-meat-soft);
+  --category-ink: var(--color-dept-meat-ink);
+}
+
+[data-category='seafood'] {
+  --category-accent: var(--color-dept-seafood);
+  --category-soft: var(--color-dept-seafood-soft);
+  --category-ink: var(--color-dept-seafood-ink);
+}
+
+[data-category='bakery'] {
+  --category-accent: var(--color-dept-bakery);
+  --category-soft: var(--color-dept-bakery-soft);
+  --category-ink: var(--color-dept-bakery-ink);
+}
+
+[data-category='prepared'] {
+  --category-accent: var(--color-dept-prepared);
+  --category-soft: var(--color-dept-prepared-soft);
+  --category-ink: var(--color-dept-prepared-ink);
+}
+
+[data-category='pantry'] {
+  --category-accent: var(--color-dept-pantry);
+  --category-soft: var(--color-dept-pantry-soft);
+  --category-ink: var(--color-dept-pantry-ink);
+}
